@@ -7,6 +7,6 @@ import org.generation.lojagames.Lojagames.model.ProdutoModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ProdutoRepository extends JpaRepository<ProdutoModel, Long> {
-	public List <ProdutoModel>findAllByDescricaoCategoriaContainingIgnoreCase(String descricaoCategoria);
+	public List <ProdutoModel>findAllByNomeContainingIgnoreCase(String nome);
 
 }

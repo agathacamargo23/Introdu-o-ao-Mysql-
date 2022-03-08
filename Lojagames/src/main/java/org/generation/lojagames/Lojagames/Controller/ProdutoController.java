@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin(origins = "*" ,allowedHeaders = "*")
-@RequestMapping("/produto")
+@RequestMapping("/produtos")
 
 public class ProdutoController {
 
@@ -40,9 +40,9 @@ public class ProdutoController {
 	
   }
 
-	@GetMapping("/descricaoCategoria/{descricaoCategoria}")
-	public ResponseEntity<List<ProdutoModel>>getBydescricaoCategoriaEntity(@PathVariable String descricaoCategoria){
-		return ResponseEntity.ok(repository.findAllByDescricaoCategoriaContainingIgnoreCase(descricaoCategoria));
+	@GetMapping("/nome/{nome}")
+	public ResponseEntity<List<ProdutoModel>>getByNomeCategoriaEntity(@PathVariable String nome){
+		return ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCase(nome));
 	}
 
 	@PostMapping

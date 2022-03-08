@@ -15,56 +15,68 @@ import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name= "tb_categoria")
-public class CategoriaModel {
+@Table(name = "tb_cliente")
+public class ClienteModel {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
-
+	private long Id;
 	
 	@NotNull
-	@Size(min = 1 , max = 30)
-	private String genero;
-	
+	@Size(min = 2, message = "Não deixar o campo vazio")
+	private String nome;
 	
 	@NotNull
-	private String versao;
+	@Size(min = 2, message = "O usuário não pode deixar vazio")
+	private String usuario;
+	
+	@NotNull
+	@Size(min = 6, message = "A senha não pode ser menor que seis caracteres")
+	private String senha;
 	
 	
-	@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
-	@JsonIgnoreProperties("categoria")
+	@OneToMany(mappedBy =  "cliente", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("cliente")
 	private List<ProdutoModel> produto;
 
 
 	public long getId() {
-		return id;
+		return Id;
 	}
 
 
 	public void setId(long id) {
-		this.id = id;
+		Id = id;
 	}
 
 
-	public String getGenero() {
-		return genero;
+	public String getNome() {
+		return nome;
 	}
 
 
-	public void setGenero(String genero) {
-		this.genero = genero;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 
-	
-	public String getVersao() {
-		return versao;
+	public String getUsuario() {
+		return usuario;
 	}
 
 
-	public void setVersao(String versao) {
-		this.versao = versao;
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+
+
+	public String getSenha() {
+		return senha;
+	}
+
+
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
 
@@ -76,5 +88,10 @@ public class CategoriaModel {
 	public void setProduto(List<ProdutoModel> produto) {
 		this.produto = produto;
 	}
+	
+	
+	
+	
 
+	
 }
